@@ -64,12 +64,7 @@ namespace WindowsFormsMysql
                 MessageBox.Show("Kötelező kitölteni");
                 return;
             }
-            if (string.IsNullOrEmpty(textBox_Kod.Text))
-            {
-                MessageBox.Show("Kötelező kitölteni");
-                return;
-            }
-            if (string.IsNullOrEmpty(textBox_Gyartmany.Text))
+             if (string.IsNullOrEmpty(textBox_Gyartmany.Text))
             {
                 MessageBox.Show("Kötelező kitölteni");
                 return;
@@ -125,6 +120,65 @@ namespace WindowsFormsMysql
                 MessageBox.Show(ex.Message);
             }
             autokAdatinakBetolteseAdatbazisbol();
+        }
+
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            //-- a listboxban van-e kiválasztott elem?
+            if(listBox_Autok.SelectedIndex < 0)
+            {
+                return;
+            }
+            //- adatmezők tartalmának az ellenőrzése
+            if (string.IsNullOrEmpty(textBox_Rendszam.Text))
+            {
+                MessageBox.Show("Kötelező kitölteni");
+                return;
+            }
+            if (string.IsNullOrEmpty(textBox_Gyartmany.Text))
+            {
+                MessageBox.Show("Kötelező kitölteni");
+                return;
+            }
+            if (string.IsNullOrEmpty(textBox_Tipus.Text))
+            {
+                MessageBox.Show("Kötelező kitölteni");
+                return;
+            }
+ 
+            sql.CommandText = "UPDATE `autok` SET rendszam=@rendszam,`gyartmany`=@gyartmany,`tipus`=@tipus WHERE `id`= @id;";
+            string kod = textBox_Kod.Text;
+            string gyartmany = textBox_Gyartmany.Text;
+            string rendszam = textBox_Rendszam.Text;
+            string tipus = textBox_Tipus.Text;
+            sql.Parameters.Clear();
+            sql.Parameters.AddWithValue("@rendszam", rendszam);
+            sql.Parameters.AddWithValue("@gyartmany", gyartmany);
+            sql.Parameters.AddWithValue("@tipus", tipus);
+            sql.Parameters.AddWithValue("@id", kod);
+            try
+            {
+                connection.Open();
+                if (sql.ExecuteNonQuery() != 1)
+                {
+                    MessageBox.Show("A módosítás sikertelen!");
+                    return;
+                }
+                else
+                {
+                    connection.Close();
+                    MessageBox.Show("A módosítás sikeres!");
+                    autokAdatinakBetolteseAdatbazisbol();
+                    textBox_Kod.Text = "";
+                    textBox_Gyartmany.Text = "";
+                    textBox_Rendszam.Text = "";
+                    textBox_Tipus.Text = "";
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

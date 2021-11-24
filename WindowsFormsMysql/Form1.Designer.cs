@@ -31,9 +31,6 @@ namespace WindowsFormsMysql
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_Update = new System.Windows.Forms.Button();
-            this.button_Delete = new System.Windows.Forms.Button();
-            this.button_Insert = new System.Windows.Forms.Button();
             this.textBox_Tipus = new System.Windows.Forms.TextBox();
             this.textBox_Gyartmany = new System.Windows.Forms.TextBox();
             this.textBox_Rendszam = new System.Windows.Forms.TextBox();
@@ -42,6 +39,9 @@ namespace WindowsFormsMysql
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button_Update = new System.Windows.Forms.Button();
+            this.button_Delete = new System.Windows.Forms.Button();
+            this.button_Insert = new System.Windows.Forms.Button();
             this.listBox_Autok = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,43 +62,6 @@ namespace WindowsFormsMysql
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Autó adatai";
-            // 
-            // button_Update
-            // 
-            this.button_Update.AutoSize = true;
-            this.button_Update.Location = new System.Drawing.Point(12, 318);
-            this.button_Update.Name = "button_Update";
-            this.button_Update.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.button_Update.Size = new System.Drawing.Size(273, 33);
-            this.button_Update.TabIndex = 6;
-            this.button_Update.Text = "Módosít";
-            this.button_Update.UseVisualStyleBackColor = true;
-            // 
-            // button_Delete
-            // 
-            this.button_Delete.AutoSize = true;
-            this.button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button_Delete.Location = new System.Drawing.Point(12, 281);
-            this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.button_Delete.Size = new System.Drawing.Size(273, 33);
-            this.button_Delete.TabIndex = 6;
-            this.button_Delete.Text = "Töröl";
-            this.button_Delete.UseVisualStyleBackColor = false;
-            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
-            // 
-            // button_Insert
-            // 
-            this.button_Insert.AutoSize = true;
-            this.button_Insert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button_Insert.Location = new System.Drawing.Point(13, 241);
-            this.button_Insert.Name = "button_Insert";
-            this.button_Insert.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.button_Insert.Size = new System.Drawing.Size(272, 33);
-            this.button_Insert.TabIndex = 6;
-            this.button_Insert.Text = "Rögzít";
-            this.button_Insert.UseVisualStyleBackColor = false;
-            this.button_Insert.Click += new System.EventHandler(this.button_Insert_Click);
             // 
             // textBox_Tipus
             // 
@@ -125,8 +88,10 @@ namespace WindowsFormsMysql
             // 
             this.textBox_Kod.Location = new System.Drawing.Point(75, 35);
             this.textBox_Kod.Name = "textBox_Kod";
+            this.textBox_Kod.ReadOnly = true;
             this.textBox_Kod.Size = new System.Drawing.Size(115, 20);
             this.textBox_Kod.TabIndex = 2;
+            this.textBox_Kod.TabStop = false;
             // 
             // label4
             // 
@@ -163,6 +128,44 @@ namespace WindowsFormsMysql
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Rendszám";
+            // 
+            // button_Update
+            // 
+            this.button_Update.AutoSize = true;
+            this.button_Update.Location = new System.Drawing.Point(12, 318);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.button_Update.Size = new System.Drawing.Size(273, 33);
+            this.button_Update.TabIndex = 6;
+            this.button_Update.Text = "Módosít";
+            this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
+            // 
+            // button_Delete
+            // 
+            this.button_Delete.AutoSize = true;
+            this.button_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.button_Delete.Location = new System.Drawing.Point(12, 281);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.button_Delete.Size = new System.Drawing.Size(273, 33);
+            this.button_Delete.TabIndex = 6;
+            this.button_Delete.Text = "Töröl";
+            this.button_Delete.UseVisualStyleBackColor = false;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
+            // button_Insert
+            // 
+            this.button_Insert.AutoSize = true;
+            this.button_Insert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button_Insert.Location = new System.Drawing.Point(13, 241);
+            this.button_Insert.Name = "button_Insert";
+            this.button_Insert.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.button_Insert.Size = new System.Drawing.Size(272, 33);
+            this.button_Insert.TabIndex = 6;
+            this.button_Insert.Text = "Rögzít";
+            this.button_Insert.UseVisualStyleBackColor = false;
+            this.button_Insert.Click += new System.EventHandler(this.button_Insert_Click);
             // 
             // listBox_Autok
             // 
